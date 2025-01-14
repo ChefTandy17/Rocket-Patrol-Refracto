@@ -15,6 +15,7 @@ class Spaceship extends Phaser.GameObjects.Sprite{
         }
     }
     
+    //reset
     reset(){
         this.x = game.config.width
     }

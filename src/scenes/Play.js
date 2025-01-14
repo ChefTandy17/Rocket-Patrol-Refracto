@@ -46,21 +46,31 @@ class Play extends Phaser.Scene{
           }
           this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig)
 
-        // 60-second play clock
+    this.gameOver = false; //Game Over Flag
+
+    // 60-second play clock
     scoreConfig.fixedWidth = 0
-    this.clock = this.time.delayedCall(60000, () => {
+    this.clock = this.time.delayedCall(60000, () => { //Phaser calling a function after a delay. 60,000 is 60 seconds
         this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5)
         this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart', scoreConfig).setOrigin(0.5)
+        this.gameOver = true //flag set to true
         }, null, this)
 
     }
+
     update(){
-        this.p1Rocket.update()
-        //update spaceships (x3)
-        this.starfield.tilePositionX -= 4
-        this.ship01.update()      
-        this.ship02.update()
-        this.ship03.update()
+
+      //to ensure that the game can restart WHEN game over and input is triggered
+      if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)){
+        this.scene.restart()
+      }
+
+      this.p1Rocket.update()
+      //update spaceships (x3)
+      this.starfield.tilePositionX -= 4
+      this.ship01.update()      
+      this.ship02.update()
+      this.ship03.update()
 
     // check collisions
     if(this.checkCollision(this.p1Rocket, this.ship03)) {
@@ -75,6 +85,15 @@ class Play extends Phaser.Scene{
         this.p1Rocket.reset()
         this.shipExplode(this.ship01)
     }
+
+    //update rocket sprites
+    if(!this.gameOver){
+      this.p1Rocket.update()
+      this.ship01.update()
+      this.ship02.update()
+      this.ship03.update()
+    }
+
 }
 
     checkCollision(rocket, ship) {
@@ -105,5 +124,8 @@ class Play extends Phaser.Scene{
         // score add and text update
         this.p1Score += ship.points
         this.scoreLeft.text = this.p1Score       
+      
+        //explosion noise
+        this.sound.play('sfx-explosion')
       }   
 }
