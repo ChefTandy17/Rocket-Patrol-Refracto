@@ -50,9 +50,9 @@ class Play extends Phaser.Scene{
 
     // 60-second play clock
     scoreConfig.fixedWidth = 0
-    this.clock = this.time.delayedCall(60000, () => { //Phaser calling a function after a delay. 60,000 is 60 seconds
+    this.clock = this.time.delayedCall(game.settings.gameTimer, () => { //Phaser calling a function after a delay. 60,000 is 60 seconds
         this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5)
-        this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart', scoreConfig).setOrigin(0.5)
+        this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5)
         this.gameOver = true //flag set to true
         }, null, this)
 
@@ -63,6 +63,10 @@ class Play extends Phaser.Scene{
       //to ensure that the game can restart WHEN game over and input is triggered
       if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)){
         this.scene.restart()
+      }
+      //same thing but want a different difficulty by going back to the menu
+      if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+        this.scene.start("menuScene")
       }
 
       this.p1Rocket.update()
