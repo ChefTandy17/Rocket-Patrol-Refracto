@@ -6,11 +6,18 @@ class Play extends Phaser.Scene{
     create(){
         //place tile sprite
         //add.titleSprint have five parameters (x-pos, y-pos, width, height, key string what image to use)
+        //"The setOrigin method chained to the end of each line tells Phaser to adjust the rectangle’s origin—
+        // the point on the rectangle used to position it in coordinate space—from the default at its center to its upper left."
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0)
-        // green UI background
+
+        //green UI background
+        //using borderUISixe, borderPadding from main.js.
+        //game.config.width is from Phaser 
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2,
         0x00FF00).setOrigin(0, 0);
-        // white borders
+        
+        //white borders
+        //game.config.height is from Phaser
         this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
         this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
         this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
@@ -48,38 +55,38 @@ class Play extends Phaser.Scene{
 
     this.gameOver = false; //Game Over Flag
 
-    // 60-second play clock
+    // time clock to end game if conditions met
     scoreConfig.fixedWidth = 0
     this.clock = this.time.delayedCall(game.settings.gameTimer, () => { //Phaser calling a function after a delay. 60,000 is 60 seconds
         this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5)
         this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5)
         this.gameOver = true //flag set to true
-        }, null, this)
+    }, null, this)
+  }
 
+  update() {
+    // check key input for restart
+    if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)) {
+        this.scene.restart()
     }
 
-    update(){
-
-      //to ensure that the game can restart WHEN game over and input is triggered
-      if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)){
-        this.scene.restart()
-      }
-      //same thing but want a different difficulty by going back to the menu
-      if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+    if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
         this.scene.start("menuScene")
-      }
+    }
 
-      this.p1Rocket.update()
-      //update spaceships (x3)
-      this.starfield.tilePositionX -= 4
-      this.ship01.update()      
-      this.ship02.update()
-      this.ship03.update()
+    this.starfield.tilePositionX -= 4
+
+    if(!this.gameOver) {
+        this.p1Rocket.update()  // update rocket sprite        
+        this.ship01.update()    // update spaceships (x3)
+        this.ship02.update()
+        this.ship03.update()
+    }
 
     // check collisions
     if(this.checkCollision(this.p1Rocket, this.ship03)) {
         this.p1Rocket.reset()
-        this.shipExplode(this.ship03)   
+        this.shipExplode(this.ship03)
     }
     if (this.checkCollision(this.p1Rocket, this.ship02)) {
         this.p1Rocket.reset()
@@ -89,16 +96,8 @@ class Play extends Phaser.Scene{
         this.p1Rocket.reset()
         this.shipExplode(this.ship01)
     }
-
-    //update rocket sprites
-    if(!this.gameOver){
-      this.p1Rocket.update()
-      this.ship01.update()
-      this.ship02.update()
-      this.ship03.update()
-    }
-
 }
+
 
     checkCollision(rocket, ship) {
         // simple AABB checking
