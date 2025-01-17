@@ -1,3 +1,9 @@
+//Tyvin Tandy
+//Rocket Patrol: The Cooler Version
+//Approx Time:
+//Mods Used
+//Citations:
+
 //To create a screen using Phaser
 let config = {
   type: Phaser.AUTO,
