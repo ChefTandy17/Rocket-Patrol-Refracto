@@ -1,8 +1,12 @@
 //Tyvin Tandy
 //Rocket Patrol: The Cooler Version
 //Approx Time:
-//Mods Used
-//Citations:
+//Mods Used:
+/////Create a new enemy Spaceship type (w/ new artwork) that's smaller, moves faster, and is worth more points (5)
+/////
+
+
+//Citations: 
 
 //To create a screen using Phaser
 let config = {
