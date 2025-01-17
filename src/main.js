@@ -2,8 +2,7 @@
 //Rocket Patrol: The Cooler Version
 //Approx Time:
 //Mods Used:
-/////Create a new enemy Spaceship type (w/ new artwork) that's smaller, moves faster, and is worth more points (5)
-/////
+/////Add your own (copyright-free) looping background music to the Play scene (keep the volume low and be sure that multiple instances of your music don't play when the game restarts) (1)
 
 
 //Citations: 
