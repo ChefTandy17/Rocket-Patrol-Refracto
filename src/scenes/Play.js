@@ -4,6 +4,11 @@ class Play extends Phaser.Scene {
         }
       
         create() {
+            //MOD: Adding copyright free background music
+            backgroundMusic.loop = true
+            backgroundMusic.volume = 0.5;
+            backgroundMusic.play('background-music')
+
               //place tile sprite
               //add.titleSprint have five parameters (x-pos, y-pos, width, height, key string what image to use)
               //"The setOrigin method chained to the end of each line tells Phaser to adjust the rectangle’s origin—
@@ -51,6 +56,25 @@ class Play extends Phaser.Scene {
                 fixedWidth: 100
             }
             this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig)
+
+            //MOD: Initialize time remaining
+            this.p1Time = game.settings.gameTimer / 1000 //converts milliseconds to seconds
+
+            //MOD: Display time remaining
+            let timeConfig = {
+                fontFamily: 'Courier',
+                fontSize: '28px',
+                backgroundColor: '#F3B141',
+                color: '#843605',
+                align: 'right',
+                padding: {
+                top: 5,
+                bottom: 5,
+                },
+                fixedWidth: 100   
+            }
+            this.timeRight = this.add.text(game.config.width - borderUISize + borderPadding * 2, this.p1Time, timeConfig)
+
       
             // GAME OVER flag
             this.gameOver = false
