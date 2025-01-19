@@ -25,6 +25,13 @@ class Menu extends Phaser.Scene{
 
       //MODDED: load background music from assets
       this.load.audio('backgroundMusic', './assets/spaceshipnoise.mp3')
+
+      //MODDED: load new explosion sound effects from assets
+      this.load.audio('sfx-explosion1', './assets/explosion1.wav')
+      this.load.audio('sfx-explosion2', './assets/explosion2.wav')
+      this.load.audio('sfx-explosion3', './assets/explosion3.wav')
+      this.load.audio('sfx-explosion4', './assets/explosion4.wav')
+
   }
 
   create(){

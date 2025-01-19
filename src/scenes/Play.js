@@ -134,7 +134,13 @@ class Play extends Phaser.Scene {
         // score add and text update
         this.p1Score += ship.points
         this.scoreLeft.text = this.p1Score
-        
-        this.sound.play('sfx-explosion')
+
+        //MODDED: Randomize explosion sound effect
+        this.explosionArray = ['sfx-explosion1', 'sfx-explosion2', 'sfx-explosion3', 'sfx-explosion4'];
+        this.sound.play(this.explosionArray[Math.floor(Math.random() * this.explosionArray.length)]);
+        //creates psudo-randomness by using Math.random, a common use for psudo-random, to generate a number from 0 to 1, then multiplying it by the length of the array,
+        // and rounding it down using Math.floor to get a whole number from index 0 and 3
+
+        //this.sound.play('sfx-explosion');
     }
   }

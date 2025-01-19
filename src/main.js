@@ -3,13 +3,18 @@
 //Approx Time:
 //Mods Used:
 /////Add your own (copyright-free) looping background music to the Play scene (keep the volume low and be sure that multiple instances of your music don't play when the game restarts) (1)
-
+//Works as expected
 
 ////Create 4 new explosion sound effects and randomize which one plays on impact (3)
+
+
 ////Display the time remaining (in seconds) on the screen (3)
 
 
 //Citations: 
+//https://stackoverflow.com/questions/34210393/looping-audio-in-phaser
+//https://www.30secondsofcode.org/js/s/random-integer-array-in-range/#:~:text=You%20can%20use%20Array.,()%20to%20make%20them%20integers.
+
 
 //To create a screen using Phaser
 let config = {
