@@ -124,7 +124,12 @@ class Play extends Phaser.Scene {
             // score add and text update
             this.p1Score += ship.points
             this.scoreLeft.text = this.p1Score
-            
-            this.sound.play('sfx-explosion')
+
+            //MOD: Create four random explosion sounds
+            const explosionSoundsArray = ['sfx-explosion1','sfx-explosion2','sfx-explosion3','sfx-explosion4']
+            const randomSound = Math.floor(Math.random() * explosionSoundsArray.length)
+            this.sound.play(randomSound)
+
+            //this.sound.play('sfx-explosion') //commented out to use the other sound
         }
       }

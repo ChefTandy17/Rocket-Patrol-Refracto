@@ -23,6 +23,12 @@ class Menu extends Phaser.Scene{
       this.load.audio('sfx-explosion','./assets/sfx-explosion.wav')
       this.load.audio('sfx-shot','./assets/sfx-shot.wav')
       this.load.audio('background-music','./assets/spaceshipnoise.wav')
+
+      //MOD: Four new audio assets
+      this.load.audio("sfx-explosion1",'./assets/explosion1.wav')
+      this.load.audio("sfx-explosion2",'./assets/explosion2.wav')
+      this.load.audio("sfx-explosion3",'./assets/explosion3.wav')
+      this.load.audio("sfx-explosion4",'./assets/explosion4.wav')   
   }
 
   create(){
