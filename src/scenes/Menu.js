@@ -22,6 +22,9 @@ class Menu extends Phaser.Scene{
       this.load.audio('sfx-select','./assets/sfx-select.wav')
       this.load.audio('sfx-explosion','./assets/sfx-explosion.wav')
       this.load.audio('sfx-shot','./assets/sfx-shot.wav')
+
+      //MODDED: load background music from assets
+      this.load.audio('backgroundMusic', './assets/spaceshipnoise.mp3')
   }
 
   create(){
@@ -84,7 +87,7 @@ class Menu extends Phaser.Scene{
         // hard mode
         game.settings = {
           spaceshipSpeed: 4,
-          gameTimer: 45000    
+          gameTimer: 5000    //45000 
         }
         this.sound.play('sfx-select')
         this.scene.start('playScene')    

@@ -62,16 +62,26 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5)
             this.gameOver = true
         }, null, this)
+
+        
+        //MODDED: Adding background music
+        this.backgroundMusic = this.sound.add('backgroundMusic', {
+            volume: 0.3,
+            loop: true
+        });
+        this.backgroundMusic.play();
     }
   
     update() {
         // check key input for restart
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)) {
             this.scene.restart()
+            this.backgroundMusic.stop();    //MODDED: Stop the music when the game restarts
         }
   
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             this.scene.start("menuScene")
+            this.backgroundMusic.stop();    //MODDED: Stop the music when the game restarts
         }
   
         this.starfield.tilePositionX -= 4
