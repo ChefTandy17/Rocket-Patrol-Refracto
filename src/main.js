@@ -6,9 +6,11 @@
 //Works as expected
 
 ////Create 4 new explosion sound effects and randomize which one plays on impact (3)
-
+//Works as expected
 
 ////Display the time remaining (in seconds) on the screen (3)
+//Brainstorming: Look at how score is displayed and modify it somehow
+//https://phaser.discourse.group/t/how-to-make-a-timer-that-displays-the-games-run-time/5175/3 
 
 
 //Citations: 

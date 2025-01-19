@@ -51,6 +51,22 @@ class Play extends Phaser.Scene {
             fixedWidth: 100
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig)
+
+        //MOD: Display time remaining
+        this.p1Time = game.settings.gameTimer / 1000;   //Converts milliseconds to seconds
+        let timeConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#5F947C',
+            color: '#843605',
+            align: 'right',
+            padding: {
+            top: 5,
+            bottom: 5,
+            },
+            fixedWidth: 100
+        }
+        this.timeLeft = this.add.text(game.config.width - borderUISize - borderPadding - 100, borderUISize + borderPadding*2, this.p1Time, timeConfig)
   
         // GAME OVER flag
         this.gameOver = false
@@ -91,7 +107,13 @@ class Play extends Phaser.Scene {
             this.ship01.update()    // update spaceships (x3)
             this.ship02.update()
             this.ship03.update()
-        }
+
+            //MOD: Since the game is not over yet, update the time remaining
+            /*
+            this.p1Time -= this.game.loop
+            this.timeLeft.text = Math.ceiling(this.p1Time)
+            */
+            }
   
         // check collisions
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
