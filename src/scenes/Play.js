@@ -5,9 +5,19 @@ class Play extends Phaser.Scene {
       
         create() {
             //MOD: Adding copyright free background music
+            if (!this.sound.get('background-music')) { // Ensure it only plays once
+                this.backgroundMusic = this.sound.add('background-music', {
+                    loop: true, // Loop the music
+                    volume: 0.5 // Set volume to low
+                });
+                this.backgroundMusic.play(); // Play the music
+            }
+
+            /*
             backgroundMusic.loop = true
             backgroundMusic.volume = 0.5;
             backgroundMusic.play('background-music')
+            */
 
               //place tile sprite
               //add.titleSprint have five parameters (x-pos, y-pos, width, height, key string what image to use)
