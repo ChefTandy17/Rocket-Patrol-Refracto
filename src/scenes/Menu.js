@@ -22,19 +22,6 @@ class Menu extends Phaser.Scene{
       this.load.audio('sfx-select','./assets/sfx-select.wav')
       this.load.audio('sfx-explosion','./assets/sfx-explosion.wav')
       this.load.audio('sfx-shot','./assets/sfx-shot.wav')
-      this.load.audio('background-music','./assets/spaceshipnoise.wav')
-
-      //MOD: Four new audio assets
-      this.load.audio("sfx-explosion1",'./assets/explosion1.wav')
-      this.load.audio("sfx-explosion2",'./assets/explosion2.wav')
-      this.load.audio("sfx-explosion3",'./assets/explosion3.wav')
-      this.load.audio("sfx-explosion4",'./assets/explosion4.wav')   
-
-      //MOD: Load background music
-      this.load.audio("background-music",'./assets/spaceshipnoise.wav')
-
-      //MOD: Creating a timer
-      
   }
 
   create(){
@@ -59,16 +46,16 @@ class Menu extends Phaser.Scene{
   }
 
 
-      //displays menu texts
-      this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'ROCKET PATROL',
-      menuConfig).setOrigin(0.5)
-      this.add.text(game.config.width/2, game.config.height/2, 'Use <--> arrows to move & (F) to fire', menuConfig).setOrigin(0.5)
-      menuConfig.backgroundColor = '#00FF00'
-      menuConfig.color = '#000'
-      this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding,  'Press <- for Novice or -> for Expert', menuConfig).setOrigin(0.5)
+  //displays menu texts
+  this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'ROCKET PATROL',
+  menuConfig).setOrigin(0.5)
+  this.add.text(game.config.width/2, game.config.height/2, 'Use <--> arrows to move & (F) to fire', menuConfig).setOrigin(0.5)
+  menuConfig.backgroundColor = '#00FF00'
+  menuConfig.color = '#000'
+  this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding,  'Press <- for Novice or -> for Expert', menuConfig).setOrigin(0.5)
   
-      menuConfig.fixedWidth = 0
-      this.clock = this.time.delayedCall(60000, () => { //Phaser calling a function after a delay. 60,000 is 60 seconds
+  menuConfig.fixedWidth = 0
+  this.clock = this.time.delayedCall(60000, () => { //Phaser calling a function after a delay. 60,000 is 60 seconds
       this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5)
       this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart', scoreConfig).setOrigin(0.5)
       this.gameOver = true //flag set to true
@@ -77,9 +64,9 @@ class Menu extends Phaser.Scene{
       //this.add.text(20, 20, "Rocket Patrol Menu") 
       //this.scene.start("playScene");
   
-      //define keys
-      keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
-      keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
+  //define keys
+  keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
+  keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
   }
 
 
