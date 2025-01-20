@@ -10,7 +10,6 @@
 
 ////Display the time remaining (in seconds) on the screen (3)
 //Brainstorming: Look at how score is displayed and modify it somehow
-//https://phaser.discourse.group/t/how-to-make-a-timer-that-displays-the-games-run-time/5175/3 
 
 
 //Citations: 
