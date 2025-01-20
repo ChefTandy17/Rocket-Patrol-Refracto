@@ -110,7 +110,7 @@ class Play extends Phaser.Scene {
 
             //MOD: Since the game is not over yet, update the time remaining
             this.p1Time -= this.game.loop.delta / 1000
-            this.timeLeft.text = Math.max(0, this.p1Time.toFixed(1));
+            this.timeLeft.text = Math.max(0, this.p1Time.toFixed(0));
             }
   
         // check collisions
